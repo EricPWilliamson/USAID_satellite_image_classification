@@ -3,6 +3,7 @@ A USAID dataset that labels certain geographic areas in Africa based on levels o
 
 ### The USAID Data Set
 Volunteers viewed a set of satellite images and labelled each image based on the level of urban development and agricultural development present within the field of view. The user-created data is summarized in the "user_data.csv" file included in this repository.
+![USAID set at a glance](USAID_user_data.png)
 
 
 ## Contents
