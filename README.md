@@ -3,23 +3,28 @@ A USAID dataset that labels certain geographic areas in Africa based on levels o
 
 ### The USAID Data Set
 Volunteers viewed a set of satellite images and labelled each image based on the level of urban development and agricultural development present within the field of view. The user-created data is summarized in the "user_data.csv" file included in this repository. Nearly all the data points are within Ethiopia. I simplified the user data down to three separate class labels: Settlement, Farmland, or Wilderness. The data set with those simplified class labels can be seen here, plotted over Google Maps:
+
 ![USAID set at a glance](USAID_user_data.png)
 
 ### Sentinel-2 Imagery
 The European Space Agency's Sentinel-2 satellites collect hyperspectral images from a heliocentric orbit. The Sentinel-2 imagery was designed to be optimal for observing trends in vegetation and other enviromental effects. To that end, it collects data using 13 spectral bands spread over the visual and infrared spectrum. An example of the USAID data plotted over a Sentinel-2 image can be seen here (we are zoomed in closer than the previous view; notice that the USAID points only canvas as small portion of the image):
+
 ![Sample Sentinel 2 image](sample_S2_img.png)
 
 ### Results
 At this point, the most accurate method of developing a prediction model has been to utilize clustering in the satellite imagery. Then compare samples based on the frequencies of clusters and train Random Forest models on the cluster frequencies.
 
 The clustering algorithm groups pixels together into clusters that share similar spectral charactaristics. This has the effect of enabling the algorithm to identify different materials within the imagery (trees, pavement, specific crops, etc.), despite having no such labels in our dataset. 
+
 ![Example of clusters](clustering_example.png)
 
 When the mixture of various clusters is used to train a Random Forest classifier, we are then able to identify the distribution of the 3 classes on any given Sentinel-2 image. (S = Settlement, F = Farmland, W = Wilderness, 0 = incomplete imagery)
+
 ![Example of classification](classification_results.png)
 
 ### Method
 This data flow diagram shows one of the ways in which we can train and utilize a classification model from the USAID data set and Sentinel-2 imagery.
+
 ![Data flow diagram](Dataflow.png)
 
 
